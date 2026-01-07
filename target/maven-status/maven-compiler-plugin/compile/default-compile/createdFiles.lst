@@ -1,0 +1,6 @@
+Controlador\registrationController.class
+com\mycompany\inmuebles\Inmuebles.class
+Controlador\RegistrationInquilinoController.class
+Controlador\LoginController.class
+Controlador\PrincipalViewController.class
+Model\FuncionesGloblaes.class

@@ -1,0 +1,9 @@
+.panel-gradient {
+    -fx-background-color: linear-gradient(
+        to left,
+        #0B0B0D 0%,
+        #16171B 40%,
+        #F2C56B 100%
+    );
+}
+
