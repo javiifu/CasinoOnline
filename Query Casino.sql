@@ -1,5 +1,4 @@
-use casino;
-go
+-- Tablas de referencia y catlogos.
 
 CREATE TABLE dbo.tipo_juego (
   tipo_juego_id tinyint NOT NULL PRIMARY KEY,
@@ -8,7 +7,7 @@ CREATE TABLE dbo.tipo_juego (
 );
 CREATE TABLE dbo.tipo_movimientos_contables (
   id_tipo_movimiento smallint NOT NULL PRIMARY KEY,
-  codigo nvarchar(32) NOT NULL UNIQUE,   -- Depositar, Mantener, apostar, ganar, Sotar, Sacar, Tasa, Devolución
+  codigo nvarchar(32) NOT NULL UNIQUE,   -- Depositar, Mantener, apostar, ganar, Sotar, Sacar, Tasa, Devoluciï¿½n
   direccion tinyint NOT NULL,          -- 1=credito	, 2=Debito, 3=neutral
   affects_balance bit NOT NULL
 );
@@ -25,7 +24,7 @@ CREATE TABLE dbo.kyc_estado (
 );
 
 
---Autenticación de usuarios. 
+--Autenticaciï¿½n de usuarios. 
 CREATE TABLE dbo.usuarios (
   id_usuario uniqueidentifier NOT NULL DEFAULT NEWID() PRIMARY KEY,
   email nvarchar(255) NOT NULL UNIQUE,
@@ -124,7 +123,7 @@ CREATE TABLE dbo.carteras (
   wallet_id uniqueidentifier NOT NULL DEFAULT NEWID() PRIMARY KEY,
   user_id uniqueidentifier NOT NULL UNIQUE,
   codigo_moneda char(3) NOT NULL DEFAULT 'EUR',
-  balance_cent bigint NOT NULL DEFAULT 0,   -- cache (opcional, pero útil)
+  balance_cent bigint NOT NULL DEFAULT 0,   -- cache (opcional, pero ï¿½til)
   holds_cent bigint NOT NULL DEFAULT 0,    -- fondos reservados (holds)
   fecha_creacion datetime2 NOT NULL DEFAULT SYSUTCDATETIME(),
   fecha_modificacion datetime2 NOT NULL DEFAULT SYSUTCDATETIME(),
@@ -136,7 +135,7 @@ CREATE TABLE dbo.contabilidad_cartera (
   id_contabilidad uniqueidentifier NOT NULL DEFAULT NEWID() PRIMARY KEY,
   wallet_id uniqueidentifier NOT NULL,
   id_tipo_movimiento smallint NOT NULL,
-  monto_cent bigint NOT NULL,              -- siempre positivo; dirección la marca ledger_type
+  monto_cent bigint NOT NULL,              -- siempre positivo; direcciï¿½n la marca ledger_type
   tipo_referencia nvarchar(32) NOT NULL,      -- PAYMENT, BET, ROUND, PAYOUT, ADJUSTMENT
   id_referencia uniqueidentifier NOT NULL,    -- apunta a payments/bets/game_rounds/payouts...
   fecha_creacion datetime2 NOT NULL DEFAULT SYSUTCDATETIME(),
@@ -147,7 +146,7 @@ CREATE TABLE dbo.contabilidad_cartera (
 CREATE INDEX IX_wallet_ledger_wallet_created ON dbo.contabilidad_cartera(wallet_id, fecha_creacion DESC);
 CREATE INDEX IX_wallet_ledger_reference ON dbo.contabilidad_cartera(tipo_referencia, id_referencia);        
 
--- Evitar duplicados por idempotencia en movimientos críticos:
+-- Evitar duplicados por idempotencia en movimientos crï¿½ticos:
 -- (por ejemplo, un SETTLE repetido por retry)
 
 CREATE TABLE dbo.juegos (
@@ -177,7 +176,7 @@ CREATE INDEX IX_sesion_juego_usuario_empezeada ON dbo.sesiones_juego(user_id, em
 CREATE TABLE dbo.rondas_juego (
   ronda_id uniqueidentifier NOT NULL DEFAULT NEWID() PRIMARY KEY,
   juego_sesion_id uniqueidentifier NOT NULL,
-  ronda_seq int NOT NULL,               -- 1..n dentro de la sesión
+  ronda_seq int NOT NULL,               -- 1..n dentro de la sesiï¿½n
   empezada_en datetime2 NOT NULL DEFAULT SYSUTCDATETIME(),
   acabada_en datetime2 NULL,
   status nvarchar(32) NOT NULL,         -- OPEN, SETTLED, CANCELED
