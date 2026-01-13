@@ -1,62 +1,104 @@
 
 package Controlador;
 
+import DAO.UserDAO;
+import Utils.SceneManager;
 import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-import javafx.fxml.FXML;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import java.util.List;
 import java.util.Arrays;
-import javafx.util.Duration;
-import javafx.animation.FadeTransition;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-
 public class LoginController implements Initializable {
 
-    private ImageView sliderImageView;
+    private static final Logger LOGGER = Logger.getLogger(LoginController.class.getName());
+    private final UserDAO userDAO = new UserDAO();
 
-    private List<Image> imagenes;
-    private int indiceActual = 0;
     @FXML
-    private Button btnLogin;
+    private Button btn_login;
     @FXML
-    private Hyperlink hyper_Regsitro;
+    private Hyperlink link_registrarse;
     @FXML
-    private ImageView id_Carrusel;
+    private TextField txt_usuario;
     @FXML
-    private TextField txt_email;
-    @FXML
-    private PasswordField psw_con;
+    private PasswordField txt_password;
 
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    
+        // Inicialización adicional si se requiere.
     }
 
-    private void cambiarImagen() {
-        indiceActual = (indiceActual + 1) % imagenes.size();
+    @FXML
+    private void handleLogin(ActionEvent event) {
+        String usuario = txt_usuario.getText() == null ? "" : txt_usuario.getText().trim();
+        String passwordRaw = txt_password.getText();
+        char[] password = passwordRaw == null ? new char[0] : passwordRaw.toCharArray();
 
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), sliderImageView);
-        fadeOut.setFromValue(1.0);
-        fadeOut.setToValue(0.0);
+        if (usuario.isBlank() || password.length == 0) {
+            showAlert(Alert.AlertType.WARNING, "Datos incompletos", "Ingrese usuario y contraseña.");
+            clearPassword(password);
+            return;
+        }
 
-        fadeOut.setOnFinished(e -> {
-            sliderImageView.setImage(imagenes.get(indiceActual));
+        Task<Boolean> loginTask = new Task<>() {
+            @Override
+            protected Boolean call() {
+                try {
+                    return userDAO.validarCredenciales(usuario, password);
+                } finally {
+                    clearPassword(password);
+                }
+            }
+        };
 
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), sliderImageView);
-            fadeIn.setFromValue(0.0);
-            fadeIn.setToValue(1.0);
-            fadeIn.play();
+        btn_login.disableProperty().bind(loginTask.runningProperty());
+        link_registrarse.disableProperty().bind(loginTask.runningProperty());
+
+        loginTask.setOnSucceeded(e -> {
+            boolean ok = loginTask.getValue();
+            txt_password.clear();
+            if (ok) {
+                SceneManager.switchScene(btn_login, "/Vista/PrincipalView.fxml", "Principal");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Credenciales inválidas", "Usuario o contraseña incorrectos.");
+            }
         });
 
-        fadeOut.play();
+        loginTask.setOnFailed(e -> {
+            txt_password.clear();
+            Throwable ex = loginTask.getException();
+            LOGGER.log(Level.SEVERE, "Error al validar credenciales", ex);
+            showAlert(Alert.AlertType.ERROR, "Error", "No fue posible validar el acceso. Intente nuevamente.");
+        });
+
+        Thread thread = new Thread(loginTask, "login-task");
+        thread.setDaemon(true);
+        thread.start();
     }
-    
+
+    @FXML
+    private void handleRegistro(ActionEvent event) {
+        SceneManager.switchScene(link_registrarse, "/Vista/registrationView.fxml", "Registro");
+    }
+
+    private void clearPassword(char[] password) {
+        Arrays.fill(password, '\0');
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
