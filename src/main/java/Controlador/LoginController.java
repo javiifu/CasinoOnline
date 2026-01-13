@@ -13,6 +13,10 @@ import javafx.util.Duration;
 import javafx.animation.FadeTransition;
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 
 public class LoginController implements Initializable {
@@ -21,6 +25,16 @@ public class LoginController implements Initializable {
 
     private List<Image> imagenes;
     private int indiceActual = 0;
+    @FXML
+    private Button btnLogin;
+    @FXML
+    private Hyperlink hyper_Regsitro;
+    @FXML
+    private ImageView id_Carrusel;
+    @FXML
+    private TextField txt_email;
+    @FXML
+    private PasswordField psw_con;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
     
