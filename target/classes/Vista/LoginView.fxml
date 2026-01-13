@@ -14,12 +14,12 @@
    <children>
       <Pane layoutX="363.0" prefHeight="405.0" prefWidth="237.0" style="-fx-background-color: #0B0B0D;">
          <children>
-            <Button id="loginButton" fx:id="btnLogin" layoutX="92.0" layoutY="289.0" mnemonicParsing="false" style="-fx-background-color: #0B0B0D; -fx-border-color: #D9DBE1; -fx-border-radius: 5; -fx-border-style: solid;" text="Log In" textFill="#d9dbe1" />
-            <Hyperlink id="lnkRegistro" fx:id="hyper_Regsitro" layoutX="147.0" layoutY="332.0" text="Regístrate" />
+            <Button id="loginButton" fx:id="btn_login" layoutX="92.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleLogin" style="-fx-background-color: #0B0B0D; -fx-border-color: #D9DBE1; -fx-border-radius: 5; -fx-border-style: solid;" text="Log In" textFill="#d9dbe1" />
+            <Hyperlink id="lnkRegistro" fx:id="link_registrarse" layoutX="147.0" layoutY="332.0" onAction="#handleRegistro" text="Regístrate" />
             <Label layoutX="23.0" layoutY="335.0" text="¿No tienes una cuenta?" textFill="#d9dbe1" />
             <Label layoutX="43.0" layoutY="168.0" text="Inicia sesión en tu Cuenta" textFill="#d9dbe1" />
-            <TextField id="txtEmail" layoutX="43.0" layoutY="195.0" promptText="Email" style="-fx-background-color: #D9DBE1;" />
-            <PasswordField id="fieldPass" layoutX="43.0" layoutY="244.0" promptText="Contraseña" style="-fx-background-color: #D9DBE1;" />
+            <TextField id="txtEmail" fx:id="txt_usuario" layoutX="43.0" layoutY="195.0" promptText="Email" style="-fx-background-color: #D9DBE1;" />
+            <PasswordField id="fieldPass" fx:id="txt_password" layoutX="43.0" layoutY="244.0" promptText="Contraseña" style="-fx-background-color: #D9DBE1;" />
             <ImageView fitHeight="114.0" fitWidth="177.0" layoutX="33.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../Downloads/logoMalko.png" />
