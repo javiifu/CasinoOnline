@@ -1,6 +1,11 @@
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Inmuebles\src\main\java\com\mycompany\inmuebles\Inmuebles.java
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Inmuebles\src\main\java\Controlador\LoginController.java
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Inmuebles\src\main\java\Controlador\PrincipalViewController.java
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Inmuebles\src\main\java\Controlador\registrationController.java
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Inmuebles\src\main\java\Controlador\RegistrationInquilinoController.java
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Inmuebles\src\main\java\Model\FuncionesGloblaes.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Casino\Casino.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Controlador\Componentes\HudBarController.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Controlador\Componentes\TablaPagosModalController.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Controlador\LoginController.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Controlador\PrincipalViewController.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Controlador\registrationController.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Controlador\SlotViewController.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\DBConnection.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\UserDAO.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\FuncionesGloblaes.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Utils\SceneManager.java

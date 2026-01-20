@@ -1,6 +1,12 @@
-Controlador\registrationController.class
-com\mycompany\inmuebles\Inmuebles.class
-Controlador\RegistrationInquilinoController.class
-Controlador\LoginController.class
 Controlador\PrincipalViewController.class
+Controlador\LoginController$1.class
+Controlador\Componentes\TablaPagosModalController.class
+DAO\UserDAO.class
+Controlador\LoginController.class
+Controlador\SlotViewController.class
+DAO\DBConnection.class
+Utils\SceneManager.class
 Model\FuncionesGloblaes.class
+Controlador\registrationController.class
+Controlador\Componentes\HudBarController.class
+Casino\Casino.class

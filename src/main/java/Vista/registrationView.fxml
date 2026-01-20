@@ -20,7 +20,7 @@
    <children>
       <ImageView fitHeight="544.0" fitWidth="580.0" layoutY="-4.0" pickOnBounds="true">
          <image>
-            <Image url="@../Presentacion/Imagenes/ChatGPT%20Image%2011%20dic%202025,%2013_11_34.png" />
+            <Image url="@Imagenes/UI/ChatGPT%20Image%2011%20dic%202025,%2013_11_34.png" />
          </image>
       </ImageView>
       <Label id="sombra" layoutX="47.0" layoutY="40.0" text="Registro" textFill="#f4c66a">
