@@ -13,6 +13,7 @@
         <URL value="@/Vista/CSS/slotview.css" />
     </stylesheets>
    <children>
+      <AnchorPane fx:id="reelContainer" layoutX="195.0" layoutY="206.0" prefHeight="360.0" prefWidth="704.0" />
       <ImageView fitHeight="600.0" fitWidth="1024.0" layoutX="97.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Imagenes/Slot/MarcoSlot.png" />

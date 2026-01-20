@@ -7,6 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+import slot.engine.GameService;
+import slot.engine.PayoutEvaluator;
+import slot.engine.SpinEngine;
+import slot.engine.SpinOutcome;
+import slot.db.SpinLog;
+import slot.db.SpinLogDao;
+import slot.db.SpinLogUtil;
+import slot.model.SlotConfig;
+import slot.model.SlotConfigFactory;
+import slot.rng.SplittableRandomSource;
+import slot.ui.ReelCanvasView;
+import java.time.Instant;
 
 
 public class SlotViewController implements Initializable {
@@ -23,11 +37,66 @@ public class SlotViewController implements Initializable {
     private Button btnAuto;
     @FXML
     private Button btnVolver;
+    @FXML
+    private AnchorPane reelContainer;
+
+    private SlotConfig config;
+    private GameService gameService;
+    private ReelCanvasView reelView;
+    private boolean spinning;
+    private SpinLogDao spinLogDao;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        config = SlotConfigFactory.createDefault(1);
+        gameService = new GameService(new SpinEngine(new SplittableRandomSource()), new PayoutEvaluator());
+        spinLogDao = new SpinLogDao();
+
+        reelView = new ReelCanvasView(config, reelContainer.getPrefWidth(), reelContainer.getPrefHeight());
+        reelContainer.getChildren().add(reelView);
+
+        Rectangle clip = new Rectangle(reelContainer.getPrefWidth(), reelContainer.getPrefHeight());
+        reelContainer.setClip(clip);
+        reelContainer.widthProperty().addListener((obs, oldVal, newVal) -> {
+            reelView.setWidth(newVal.doubleValue());
+            clip.setWidth(newVal.doubleValue());
+        });
+        reelContainer.heightProperty().addListener((obs, oldVal, newVal) -> {
+            reelView.setHeight(newVal.doubleValue());
+            clip.setHeight(newVal.doubleValue());
+        });
+
+        reelView.setOnSpinFinished(() -> {
+            spinning = false;
+            btnSpin.setDisable(false);
+        });
+
+        btnSpin.setOnAction(event -> spinOnce());
     }    
+
+    private void spinOnce() {
+        if (spinning) {
+            return;
+        }
+        spinning = true;
+        btnSpin.setDisable(true);
+        SpinOutcome outcome = gameService.spin(config);
+        logSpin(outcome);
+        reelView.startSpin(outcome.result());
+    }
+
+    private void logSpin(SpinOutcome outcome) {
+        SpinLog log = SpinLogDao.buildLog(
+                Instant.now(),
+                config.betTotal(),
+                outcome.payoutDetail().totalWin(),
+                outcome.result().getStops().stops(),
+                SpinLogUtil.windowToCompactString(outcome.result()),
+                outcome.payoutDetail().scatterCount(),
+                outcome.payoutDetail().bonusTriggered()
+        );
+        spinLogDao.insertAsync(log);
+    }
     
 }
