@@ -6,6 +6,7 @@ slot\engine\SpinOutcome.class
 Controlador\PrincipalViewController.class
 slot\engine\PayoutEvaluator.class
 slot\ui\ReelCanvasView$ReelAnim.class
+Model\SessionContext.class
 Controlador\Componentes\TablaPagosModalController.class
 slot\model\SpinResult.class
 slot\db\SpinLogUtil.class
@@ -28,6 +29,8 @@ Casino\Casino.class
 slot\rng\SplittableRandomSource.class
 slot\sim\SlotSimulator.class
 Controlador\LoginController$1.class
+Utils\SceneLoader.class
+Model\UserSessionData.class
 slot\model\LineWin.class
 DAO\UserDAO.class
 slot\engine\SpinEngine.class

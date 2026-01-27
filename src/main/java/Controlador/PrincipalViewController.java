@@ -30,22 +30,15 @@ public class PrincipalViewController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btn_Jugar.setOnAction(this::handleJugar);
+        btn_Jugar.setOnAction(this::click_jugar);
         loadSessionData();
         refreshBalance();
     }    
 
-    @FXML
-    private void handleJugar(ActionEvent event) {
-        SceneLoader.switchScene(btn_Jugar, "/Vista/Slot View.fxml", "Slot", controller -> {
-            if (controller instanceof SlotViewController slotController) {
-                slotController.setSessionContext(sessionContext);
-            }
-        });
-    }
+    
 
     private void loadSessionData() {
-        String nombre = sessionContext.getUsername();
+        String nombre = sessionContext.getUsername()+ "!";
         id_NombreUsuario.setText(nombre != null && !nombre.isBlank() ? nombre : "Invitado");
     }
 
@@ -62,6 +55,16 @@ public class PrincipalViewController implements Initializable {
     private String formatBalance(long balanceCent) {
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("es", "ES"));
         return format.format(balanceCent / 100.0);
+    }
+
+    @FXML
+    private void click_jugar(ActionEvent event) {
+        
+        SceneLoader.switchScene(btn_Jugar, "/Vista/Slot View.fxml", "Slot", controller -> {
+            if (controller instanceof SlotViewController slotController) {
+                slotController.setSessionContext(sessionContext);
+            }
+        });
     }
     
 }

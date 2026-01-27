@@ -8,7 +8,9 @@ C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Control
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\DBConnection.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\UserDAO.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\FuncionesGloblaes.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\SessionContext.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\UserRegistrationData.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\UserSessionData.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\db\SpinLog.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\db\SpinLogDao.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\db\SpinLogUtil.java
@@ -33,4 +35,5 @@ C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\si
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\ui\ReelCanvasView.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\ui\SymbolImageCache.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Utils\PasswordHasher.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Utils\SceneLoader.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Utils\SceneManager.java
