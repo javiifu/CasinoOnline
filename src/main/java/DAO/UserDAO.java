@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.UserRegistrationData;
+import Model.UserSessionData;
 import Utils.PasswordHasher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,6 +48,51 @@ public class UserDAO {
             }
         } catch (SQLException ex) {
             LOGGER.log(Level.SEVERE, "Error al consultar credenciales", ex);
+            throw new RuntimeException("Error de base de datos", ex);
+        }
+    }
+
+    public Optional<UserSessionData> findSessionDataByEmail(String email) {
+        String sql = """
+                SELECT u.user_id, COALESCE(up.nombre, u.email) AS nombre
+                FROM auth.usuarios u
+                LEFT JOIN usr.user_profile up ON up.user_id = u.user_id
+                WHERE u.email = ?
+                """;
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (!resultSet.next()) {
+                    return Optional.empty();
+                }
+                UUID userId = resultSet.getObject("user_id", UUID.class);
+                String nombre = resultSet.getString("nombre");
+                return Optional.of(new UserSessionData(userId, nombre));
+            }
+        } catch (SQLException ex) {
+            LOGGER.log(Level.SEVERE, "Error al recuperar datos de sesión", ex);
+            throw new RuntimeException("Error de base de datos", ex);
+        }
+    }
+
+    public long getBalanceByUserId(UUID userId) {
+        String sql = """
+                SELECT balance_cent
+                FROM wallet.carteras
+                WHERE user_id = ?
+                """;
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setObject(1, userId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getLong("balance_cent");
+                }
+            }
+            return 0L;
+        } catch (SQLException ex) {
+            LOGGER.log(Level.SEVERE, "Error al recuperar balance", ex);
             throw new RuntimeException("Error de base de datos", ex);
         }
     }

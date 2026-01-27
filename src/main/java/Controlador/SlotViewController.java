@@ -1,10 +1,13 @@
 
 package Controlador;
 
+import Model.SessionContext;
+import Utils.SceneLoader;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
@@ -45,6 +48,7 @@ public class SlotViewController implements Initializable {
     private ReelCanvasView reelView;
     private boolean spinning;
     private SpinLogDao spinLogDao;
+    private SessionContext sessionContext;
     
     
     @Override
@@ -73,7 +77,20 @@ public class SlotViewController implements Initializable {
         });
 
         btnSpin.setOnAction(event -> spinOnce());
+        btnVolver.setOnAction(this::handleVolver);
     }    
+
+    public void setSessionContext(SessionContext sessionContext) {
+        this.sessionContext = sessionContext;
+    }
+
+    private void handleVolver(ActionEvent event) {
+        SceneLoader.switchScene(btnVolver, "/Vista/PrincipalView.fxml", "Principal", controller -> {
+            if (controller instanceof PrincipalViewController principalController) {
+                principalController.refreshBalance();
+            }
+        });
+    }
 
     private void spinOnce() {
         if (spinning) {
