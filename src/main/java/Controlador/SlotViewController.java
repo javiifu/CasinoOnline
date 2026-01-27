@@ -24,10 +24,12 @@ import slot.model.SlotConfigFactory;
 import slot.rng.SplittableRandomSource;
 import slot.ui.ReelCanvasView;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class SlotViewController implements Initializable {
-
+    private static final Logger LOGGER = Logger.getLogger(SlotViewController.class.getName());
     @FXML
     private Button btnSpin;
     @FXML
@@ -104,9 +106,15 @@ public class SlotViewController implements Initializable {
     }
 
     private void logSpin(SpinOutcome outcome) {
+        if (sessionContext == null
+                || sessionContext.getRoundId() == null
+                || sessionContext.getBetId() == null) {
+            LOGGER.log(Level.WARNING, "Spin log omitido: faltan ronda_id o apuesta_id en la sesión.");
+            return;
+        }
         SpinLog log = SpinLogDao.buildLog(
-                UUID.randomUUID(),
-                UUID.randomUUID(),
+                sessionContext.getRoundId(),
+                sessionContext.getBetId(),
                 SpinLogUtil.windowToJson(outcome.result()),
                 SpinLogUtil.stopsToJson(outcome.result().getStops().stops()),
                 null,
@@ -115,6 +123,8 @@ public class SlotViewController implements Initializable {
                 1
         );
         spinLogDao.insertAsync(log);
+
+
     }
     
 }

@@ -1,19 +1,19 @@
 slot\ui\SymbolImageCache.class
-slot\db\SpinLogDao.class
 Controlador\registrationController$ValidationResult.class
 slot\model\SpinStops.class
 slot\engine\SpinOutcome.class
 Controlador\PrincipalViewController.class
 slot\engine\PayoutEvaluator.class
 slot\ui\ReelCanvasView$ReelAnim.class
+DAO\SpinLogUtil.class
 Model\SessionContext.class
 Controlador\Componentes\TablaPagosModalController.class
 slot\model\SpinResult.class
-slot\db\SpinLogUtil.class
 DAO\DBConnection.class
 slot\model\SlotConfig.class
 Utils\PasswordHasher.class
 slot\model\Paytable.class
+DAO\SpinLogDao.class
 slot\rng\RandomSource.class
 slot\ui\ReelCanvasView$1.class
 slot\engine\BonusEngine.class
@@ -21,7 +21,6 @@ slot\model\Symbol.class
 Model\FuncionesGloblaes.class
 Controlador\registrationController.class
 slot\model\LineMap.class
-slot\db\SpinLog.class
 slot\model\ReelStrip.class
 slot\model\SlotConfigFactory.class
 Model\UserRegistrationData.class
@@ -40,5 +39,6 @@ slot\model\PayoutDetail.class
 Utils\SceneManager.class
 Controlador\LoginController$ValidationResult.class
 slot\engine\GameService.class
+DAO\SpinLog.class
 Controlador\Componentes\HudBarController.class
 slot\ui\ReelCanvasView.class

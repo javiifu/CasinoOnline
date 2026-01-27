@@ -10,41 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SpinLogDao {
-    public static final String DDL = """
-            CREATE TABLE [game].[spins_slot](
-                [ronda_id] [uniqueidentifier] NOT NULL,
-                [apuesta_id] [uniqueidentifier] NOT NULL,
-                [grid_rodillos_json] [nvarchar](max) NULL,
-                [lineas_json] [nvarchar](max) NULL,
-                [semilla_rng] [nvarchar](128) NULL,
-                [nonce_rng] [nvarchar](128) NULL,
-                [es_bonus] [bit] NOT NULL,
-                [multiplicador] [int] NOT NULL,
-            PRIMARY KEY CLUSTERED 
-            (
-                [ronda_id] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-            UNIQUE NONCLUSTERED 
-            (
-                [apuesta_id] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-            ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-            GO
-
-            ALTER TABLE [game].[spins_slot] ADD  DEFAULT ((0)) FOR [es_bonus]
-            GO
-
-            ALTER TABLE [game].[spins_slot] ADD  DEFAULT ((1)) FOR [multiplicador]
-            GO
-
-            ALTER TABLE [game].[spins_slot]  WITH CHECK ADD FOREIGN KEY([apuesta_id])
-            REFERENCES [game].[apuestas] ([apuesta_id])
-            GO
-
-            ALTER TABLE [game].[spins_slot]  WITH CHECK ADD FOREIGN KEY([ronda_id])
-            REFERENCES [game].[rondas_juego] ([ronda_id])
-            """;
-
+    
     private static final Logger LOGGER = Logger.getLogger(SpinLogDao.class.getName());
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
 

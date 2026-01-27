@@ -6,14 +6,14 @@ C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Control
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Controlador\registrationController.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Controlador\SlotViewController.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\DBConnection.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\SpinLog.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\SpinLogDao.java
+C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\SpinLogUtil.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\DAO\UserDAO.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\FuncionesGloblaes.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\SessionContext.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\UserRegistrationData.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\Model\UserSessionData.java
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\db\SpinLog.java
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\db\SpinLogDao.java
-C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\db\SpinLogUtil.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\engine\BonusEngine.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\engine\GameService.java
 C:\Users\javib\OneDrive\Documentos\NetBeansProjects\Casino\src\main\java\slot\engine\PayoutEvaluator.java
