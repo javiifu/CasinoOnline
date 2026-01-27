@@ -18,7 +18,7 @@
 
 <AnchorPane id="anchorpane" fx:id="btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.registrationController">
    <children>
-      <ImageView fitHeight="544.0" fitWidth="580.0" layoutY="-4.0" pickOnBounds="true">
+      <ImageView fitHeight="544.0" fitWidth="580.0" layoutY="-3.0" pickOnBounds="true">
          <image>
             <Image url="@Imagenes/UI/ChatGPT%20Image%2011%20dic%202025,%2013_11_34.png" />
          </image>
@@ -90,28 +90,29 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></TextField>
-      <CheckBox id="checkCondiciones" fx:id="chkCondiciones" layoutX="47.0" layoutY="375.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="264.0" text="  He leído y acepto Condiciones y servicios." textFill="#d9dbe1">
+      <CheckBox id="checkCondiciones" fx:id="chkCondiciones" layoutX="46.0" layoutY="400.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="264.0" text="  He leído y acepto Condiciones y servicios." textFill="#d9dbe1">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></CheckBox>
-      <Hyperlink id="lnkCondiciones" layoutX="300.0" layoutY="387.0" text="Leer Condiciones y servicios" />
-      <Button id="btnRegistrar" fx:id="btnRegistrar" layoutX="47.0" layoutY="451.0" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="235.0" style="-fx-background-color: #0B0B0D; -fx-border-radius: 5; -fx-border-color: #D9DBE1;" text="Registrarse" textFill="#d9dbe1">
+      <Hyperlink id="lnkCondiciones" layoutX="299.0" layoutY="412.0" text="Leer Condiciones y servicios" />
+      <Button id="btnRegistrar" fx:id="btnRegistrar" layoutX="46.0" layoutY="476.0" mnemonicParsing="false" onAction="#clickRegistro" prefHeight="30.0" prefWidth="235.0" style="-fx-background-color: #0B0B0D; -fx-border-radius: 5; -fx-border-color: #D9DBE1;" text="Registrarse" textFill="#d9dbe1">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <CheckBox id="checkProteccionDatos" fx:id="chkLOPD" layoutX="47.0" layoutY="421.0" mnemonicParsing="false" text="  Acepto la ley de protección de datos." textFill="#d9dbe1">
+      <CheckBox id="checkProteccionDatos" fx:id="chkLOPD" layoutX="46.0" layoutY="446.0" mnemonicParsing="false" text="  Acepto la ley de protección de datos." textFill="#d9dbe1">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></CheckBox>
-      <Button id="btnVolver" fx:id="btnVolver" layoutX="300.0" layoutY="451.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="30.0" prefWidth="235.0" style="-fx-background-color: #0B0B0D; -fx-border-radius: 5; -fx-border-color: #D9DBE1;" text="Volver" textFill="#d9dbe1">
+      <Button id="btnVolver" fx:id="btnVolver" layoutX="299.0" layoutY="476.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="30.0" prefWidth="235.0" style="-fx-background-color: #0B0B0D; -fx-border-radius: 5; -fx-border-color: #D9DBE1;" text="Volver" textFill="#d9dbe1">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Hyperlink id="linkRGPD" layoutX="272.0" layoutY="418.0" text="Ver política de protección de datos. " />
+      <Hyperlink id="linkRGPD" layoutX="271.0" layoutY="443.0" text="Ver política de protección de datos. " />
       <Label layoutX="47.0" layoutY="36.0" text="Registro" textFill="#f4c66a">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+      <Label fx:id="lbl_Obligacion" layoutX="46.0" layoutY="377.0" prefHeight="17.0" prefWidth="394.0" text="Tienes que rellenar todos los campos antes de poder registrarte" textFill="RED" />
    </children>
 </AnchorPane>

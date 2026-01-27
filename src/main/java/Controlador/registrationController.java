@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -59,6 +60,8 @@ public class registrationController implements Initializable {
     private CheckBox chkLOPD;
     @FXML
     private Button btnVolver;
+    @FXML
+    private Label lbl_Obligacion;
 
     /**
      * Initializes the controller class.
@@ -68,14 +71,13 @@ public class registrationController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void click(ActionEvent event) {
-        
-        
-    }
 
     @FXML
     private void clickVolver(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickRegistro(ActionEvent event) {
     }
     
 }
