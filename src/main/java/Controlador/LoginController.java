@@ -35,8 +35,6 @@ public class LoginController implements Initializable {
     private PasswordField txt_password;
     @FXML
     private Label lbl_Error;
-    @FXML
-    private ImageView id_Carrusel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

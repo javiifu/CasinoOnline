@@ -29,6 +29,11 @@
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.8.2.jre11</version>
+        </dependency>
 
         <!-- Si quieres tests, luego metemos JUnit, de momento no hace falta -->
     </dependencies>

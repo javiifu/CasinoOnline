@@ -40,6 +40,13 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></TextField>
+      <TextField id="txtApellidos" fx:id="txtApellidos" layoutX="300.0" layoutY="88.0" prefHeight="25.0" prefWidth="235.0" promptText="Apellidos" style="-fx-background-color: #D9DBE1;">
+         <effect>
+            <ColorAdjust />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></TextField>
       <TextField id="txtNIF" fx:id="txtNif" layoutX="300.0" layoutY="129.0" prefHeight="25.0" prefWidth="235.0" promptText="NIF/NIE o Pasaporte" style="-fx-background-color: #D9DBE1;">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -48,27 +55,20 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></TextField>
+      <DatePicker id="dateNacimiento" fx:id="dateNacimiento" layoutX="47.0" layoutY="170.0" prefHeight="25.0" prefWidth="235.0" promptText="Fecha de Nacimiento">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></DatePicker>
       <PasswordField fx:id="txtPassword" layoutX="300.0" layoutY="170.0" prefHeight="25.0" prefWidth="235.0" promptText="Contraseña" style="-fx-background-color: #D9DBE1;">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </PasswordField>
-      <TextField id="txtApellidos" fx:id="txtApellidos" layoutX="300.0" layoutY="88.0" prefHeight="25.0" prefWidth="235.0" promptText="Apellidos" style="-fx-background-color: #D9DBE1;">
-         <effect>
-            <ColorAdjust />
-         </effect>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></TextField>
-      <DatePicker id="dateNacimiento" fx:id="dateNacimiento" layoutX="47.0" layoutY="170.0" prefHeight="25.0" prefWidth="235.0" promptText="Fecha de Nacimiento">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></DatePicker>
-      <TextField id="txtTelefono" fx:id="txtTelefono" layoutX="300.0" layoutY="212.0" prefHeight="25.0" prefWidth="235.0" promptText="Teléfono" style="-fx-background-color: #D9DBE1;">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></TextField>
       <TextField id="txtNombreCalle" fx:id="txtNombreCalle" layoutX="47.0" layoutY="212.0" prefHeight="25.0" prefWidth="235.0" promptText="Nombre Calle" style="-fx-background-color: #D9DBE1;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></TextField>
+      <TextField id="txtTelefono" fx:id="txtTelefono" layoutX="300.0" layoutY="212.0" prefHeight="25.0" prefWidth="235.0" promptText="Teléfono" style="-fx-background-color: #D9DBE1;">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></TextField>
@@ -101,19 +101,19 @@
             <Cursor fx:constant="HAND" />
          </cursor></CheckBox>
       <Hyperlink id="lnkCondiciones" layoutX="300.0" layoutY="374.0" text="Leer Condiciones y servicios" />
-      <Button id="btnRegistrar" fx:id="btnRegistrar" layoutX="47.0" layoutY="461.0" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="235.0" style="-fx-background-color: #0B0B0D; -fx-border-radius: 5; -fx-border-color: #D9DBE1;" text="Registrarse" textFill="#d9dbe1">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
       <CheckBox id="checkProteccionDatos" fx:id="chkLOPD" layoutX="47.0" layoutY="408.0" mnemonicParsing="false" text="  Acepto la ley de protección de datos." textFill="#d9dbe1">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></CheckBox>
+      <Hyperlink id="linkRGPD" text="Ver política de protección de datos. " />
+      <Button id="btnRegistrar" fx:id="btnRegistrar" layoutX="47.0" layoutY="461.0" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="235.0" style="-fx-background-color: #0B0B0D; -fx-border-radius: 5; -fx-border-color: #D9DBE1;" text="Registrarse" textFill="#d9dbe1">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Button id="btnVolver" fx:id="btnVolver" layoutX="300.0" layoutY="461.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="30.0" prefWidth="235.0" style="-fx-background-color: #0B0B0D; -fx-border-radius: 5; -fx-border-color: #D9DBE1;" text="Volver" textFill="#d9dbe1">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Hyperlink id="linkRGPD" layoutX="272.0" layoutY="405.0" text="Ver política de protección de datos. " />
       <Label fx:id="lbl_Obligacion" layoutX="47.0" layoutY="438.0" textFill="#ffb3b3" visible="false">
          <font>
             <Font name="System Bold" size="12.0" />
