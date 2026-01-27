@@ -2,9 +2,12 @@
 package Controlador;
 
 import DAO.UserDAO;
+import Model.SessionContext;
+import Model.UserSessionData;
 import Utils.SceneManager;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,6 +76,15 @@ public class LoginController implements Initializable {
             boolean ok = loginTask.getValue();
             txt_password.clear();
             if (ok) {
+                Optional<UserSessionData> sessionData = userDAO.findSessionDataByEmail(usuario);
+                if (sessionData.isEmpty()) {
+                    lbl_Error.setText("No se pudo cargar los datos del usuario.");
+                    lbl_Error.setVisible(true);
+                    return;
+                }
+                UserSessionData data = sessionData.get();
+                long balance = userDAO.getBalanceByUserId(data.userId());
+                SessionContext.getInstance().setSession(data.userId(), data.nombre(), balance);
                 SceneManager.switchScene(btn_login, "/Vista/PrincipalView.fxml", "Principal");
             } else {
                 lbl_Error.setText(validation.message());

@@ -5,6 +5,7 @@
 package Controlador;
 
 import DAO.UserDAO;
+import Model.SessionContext;
 import Model.UserRegistrationData;
 import Utils.SceneManager;
 import java.net.URL;
@@ -104,6 +105,8 @@ public class registrationController implements Initializable {
             }
             Optional<UUID> userId = userDAO.registrarUsuario(buildRegistrationData(), password);
             if (userId.isPresent()) {
+                long balance = userDAO.getBalanceByUserId(userId.get());
+                SessionContext.getInstance().setSession(userId.get(), txtNombre.getText().trim(), balance);
                 SceneManager.switchScene(btnRegistrar, "/Vista/PrincipalView.fxml", "Principal");
             } else {
                 showAlert(Alert.AlertType.ERROR, "Registro fallido", "No se pudo completar el registro.");
