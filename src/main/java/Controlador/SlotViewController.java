@@ -16,14 +16,14 @@ import slot.engine.GameService;
 import slot.engine.PayoutEvaluator;
 import slot.engine.SpinEngine;
 import slot.engine.SpinOutcome;
-import slot.db.SpinLog;
-import slot.db.SpinLogDao;
-import slot.db.SpinLogUtil;
+import DAO.SpinLog;
+import DAO.SpinLogDao;
+import DAO.SpinLogUtil;
 import slot.model.SlotConfig;
 import slot.model.SlotConfigFactory;
 import slot.rng.SplittableRandomSource;
 import slot.ui.ReelCanvasView;
-import java.time.Instant;
+import java.util.UUID;
 
 
 public class SlotViewController implements Initializable {
@@ -105,13 +105,14 @@ public class SlotViewController implements Initializable {
 
     private void logSpin(SpinOutcome outcome) {
         SpinLog log = SpinLogDao.buildLog(
-                Instant.now(),
-                config.betTotal(),
-                outcome.payoutDetail().totalWin(),
-                outcome.result().getStops().stops(),
-                SpinLogUtil.windowToCompactString(outcome.result()),
-                outcome.payoutDetail().scatterCount(),
-                outcome.payoutDetail().bonusTriggered()
+                UUID.randomUUID(),
+                UUID.randomUUID(),
+                SpinLogUtil.windowToJson(outcome.result()),
+                SpinLogUtil.stopsToJson(outcome.result().getStops().stops()),
+                null,
+                null,
+                outcome.payoutDetail().bonusTriggered(),
+                1
         );
         spinLogDao.insertAsync(log);
     }
