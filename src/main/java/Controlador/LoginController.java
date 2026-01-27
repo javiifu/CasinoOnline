@@ -15,8 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class LoginController implements Initializable {
 
@@ -31,21 +33,27 @@ public class LoginController implements Initializable {
     private TextField txt_usuario;
     @FXML
     private PasswordField txt_password;
+    @FXML
+    private Label lbl_Error;
+    @FXML
+    private ImageView id_Carrusel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Inicialización adicional si se requiere.
+        lbl_Error.setVisible(false);
     }
 
     @FXML
     private void handleLogin(ActionEvent event) {
+        ValidationResult validation = validarCampos();
         String usuario = txt_usuario.getText() == null ? "" : txt_usuario.getText().trim();
         String passwordRaw = txt_password.getText();
         char[] password = passwordRaw == null ? new char[0] : passwordRaw.toCharArray();
 
-        if (usuario.isBlank() || password.length == 0) {
-            showAlert(Alert.AlertType.WARNING, "Datos incompletos", "Ingrese usuario y contraseña.");
-            clearPassword(password);
+        if(!validation.isValid()){
+            lbl_Error.setText(validation.message());
+            lbl_Error.setVisible(true);
             return;
         }
 
@@ -69,7 +77,8 @@ public class LoginController implements Initializable {
             if (ok) {
                 SceneManager.switchScene(btn_login, "/Vista/PrincipalView.fxml", "Principal");
             } else {
-                showAlert(Alert.AlertType.ERROR, "Credenciales inválidas", "Usuario o contraseña incorrectos.");
+                lbl_Error.setText(validation.message());
+                lbl_Error.setVisible(true);
             }
         });
 
@@ -77,7 +86,8 @@ public class LoginController implements Initializable {
             txt_password.clear();
             Throwable ex = loginTask.getException();
             LOGGER.log(Level.SEVERE, "Error al validar credenciales", ex);
-            showAlert(Alert.AlertType.ERROR, "Error", "No fue posible validar el acceso. Intente nuevamente.");
+            lbl_Error.setText("No fue posible validar el inicio de sesión. Pruebe más tarde.");
+            lbl_Error.setVisible(true);
         });
 
         Thread thread = new Thread(loginTask, "login-task");
@@ -100,5 +110,27 @@ public class LoginController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    
+    private ValidationResult validarCampos() {
+        if (isBlank(txt_usuario)|| isBlank(txt_password)) {
+            return ValidationResult.invalid("Debe rellenar los campos de usuario y contraseña");
+        }
+        
+        return ValidationResult.valid();
+    }
+    
+    private boolean isBlank(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+    
+    private record ValidationResult(boolean isValid, String message) {
+        static ValidationResult valid() {
+            return new ValidationResult(true, "");
+        }
+
+        static ValidationResult invalid(String message) {
+            return new ValidationResult(false, message);
+        }
     }
 }

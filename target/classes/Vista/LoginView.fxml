@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -8,25 +9,36 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.LoginController">
-   <children>
-      <Pane layoutX="363.0" prefHeight="405.0" prefWidth="237.0" style="-fx-background-color: #0B0B0D;">
+
+<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.LoginController">
+   <center>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="loginButton" fx:id="btn_login" layoutX="92.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleLogin" style="-fx-background-color: #0B0B0D; -fx-border-color: #D9DBE1; -fx-border-radius: 5; -fx-border-style: solid;" text="Log In" textFill="#d9dbe1" />
-            <Hyperlink id="lnkRegistro" fx:id="link_registrarse" layoutX="147.0" layoutY="332.0" onAction="#handleRegistro" text="Regístrate" />
-            <Label layoutX="23.0" layoutY="335.0" text="¿No tienes una cuenta?" textFill="#d9dbe1" />
-            <Label layoutX="43.0" layoutY="168.0" text="Inicia sesión en tu Cuenta" textFill="#d9dbe1" />
-            <TextField id="txtEmail" fx:id="txt_usuario" layoutX="43.0" layoutY="195.0" promptText="Email" style="-fx-background-color: #D9DBE1;" />
-            <PasswordField id="fieldPass" fx:id="txt_password" layoutX="43.0" layoutY="244.0" promptText="Contraseña" style="-fx-background-color: #D9DBE1;" />
-            <ImageView fitHeight="114.0" fitWidth="177.0" layoutX="33.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../Downloads/logoMalko.png" />
-               </image>
-            </ImageView>
+            <Pane layoutX="363.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="405.0" prefWidth="237.0" style="-fx-background-color: #0B0B0D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button id="loginButton" fx:id="btn_login" layoutX="91.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleLogin" style="-fx-background-color: #0B0B0D; -fx-border-color: #D9DBE1; -fx-border-radius: 5; -fx-border-style: solid;" text="Log In" textFill="#d9dbe1" />
+                  <Hyperlink id="lnkRegistro" fx:id="link_registrarse" layoutX="148.0" layoutY="346.0" onAction="#handleRegistro" text="Regístrate" />
+                  <Label layoutX="24.0" layoutY="349.0" text="¿No tienes una cuenta?" textFill="#d9dbe1" />
+                  <Label layoutX="43.0" layoutY="168.0" text="Inicia sesión en tu Cuenta" textFill="#d9dbe1" />
+                  <TextField id="txtEmail" fx:id="txt_usuario" layoutX="43.0" layoutY="195.0" promptText="Email" style="-fx-background-color: #D9DBE1;" />
+                  <PasswordField id="fieldPass" fx:id="txt_password" layoutX="43.0" layoutY="244.0" promptText="Contraseña" style="-fx-background-color: #D9DBE1;" />
+                  <ImageView fitHeight="114.0" fitWidth="177.0" layoutX="33.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Imagenes/UI/logoMalko.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbl_Error" layoutX="19.0" layoutY="329.0" text="hi" textFill="RED" />
+                  <ImageView fitHeight="417.0" fitWidth="443.0" layoutX="-329.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
-      </Pane>
-      <ImageView id="sliderImageView" fx:id="id_Carrusel" fitHeight="405.0" fitWidth="365.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" />
-   </children>
-</AnchorPane>
+      </AnchorPane>
+   </center>
+</BorderPane>
