@@ -4,6 +4,7 @@ import DAO.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -38,7 +39,7 @@ public class SpinLogDao {
                 """;
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setObject(1, log.timestamp());
+            statement.setTimestamp(1, Timestamp.from(log.timestamp()));
             statement.setInt(2, log.betTotal());
             statement.setInt(3, log.winTotal());
             statement.setString(4, log.stops());

@@ -26,6 +26,10 @@ public class PrincipalViewController implements Initializable {
     private Label id_Balance;
     @FXML
     private Button btn_Jugar;
+    @FXML
+    private Button btn_Usuario;
+    @FXML
+    private Button btn_Notificaciones;
 
     
     @Override
